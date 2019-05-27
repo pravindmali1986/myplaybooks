@@ -1,0 +1,6 @@
+---
+# ************************************************
+config_cluster:
+  path_to_data:
+    - /data/elastic01
+    - /data/elastic02

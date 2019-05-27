@@ -1,0 +1,12 @@
+# tasks file for elasticsearch-node
+- name: include vars
+  include_vars:
+    file: elastic_pro.yml
+
+
+- name: Configuring template
+  template:
+    src: test-template.j2
+    dest: "/tmp/test-template.yml"
+    backup: yes
+
