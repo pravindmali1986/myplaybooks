@@ -1,0 +1,22 @@
+---
+- name: Hello World!
+  hosts: all
+  tasks:
+
+  - name: Hello World!
+    shell: echo "Hi! Ansible is working."
+    register: shell
+
+  - name: store as fact
+    set_fact:
+      user_data: "{{ shell }}"
+    register: shell
+
+  - debug: var=user_data
+
+  - name: when condition
+    shell: echo "When condition is working"
+    when: "user_data.changed == True"
+    register: when
+
+  - debug: var=when
