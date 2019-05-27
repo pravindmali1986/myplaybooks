@@ -1,0 +1,11 @@
+---
+- name: ping
+  hosts: remote
+
+  environment:
+    ANSIBLE_KEEP_REMOTE_FILES: true
+
+  tasks:
+
+  - name: ping
+    ping: 
