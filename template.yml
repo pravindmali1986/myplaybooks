@@ -1,0 +1,12 @@
+---
+- name: template
+  hosts: linux
+  tasks:
+
+    - name: template example
+      template:
+        src: /root/ansible/var.yaml
+        dest: /root/ansible/pravin.txt
+        owner: root
+        group: root
+        mode: 0644
