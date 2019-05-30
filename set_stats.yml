@@ -1,0 +1,40 @@
+First Playbook :
+
+---
+  - hosts: localhost
+    connection: local
+    gather_facts: False
+    tasks:
+
+      - name: Provision EC2 instance
+        ec2:
+           key_name: <keyname>
+           group: <group>
+           instance_type: t2.micro
+           region: ap-south-1
+           image: ami-id
+           wait: yes
+           exact_count: 1
+           count_tag:
+              Name: "{{ instance_name }}"
+           instance_tags:  
+              Name: "{{ instance_name }}"
+        register: change
+
+      - name: get vm ipaddr
+        set_stats:
+          data:
+            vm_ip: "{{ change['instances'][0]['public_ip'] }}"
+ 
+-----------------------------------------
+
+Second Playbook: 
+---
+- name: Run some commands
+  hosts: "{{vm_ip}}"    <-------
+  connection: local
+  gather_facts: False
+  tasks:
+
+  - name: date 
+    command: date
