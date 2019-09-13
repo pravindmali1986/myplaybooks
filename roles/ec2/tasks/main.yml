@@ -1,0 +1,10 @@
+# tasks file for elasticsearch-node
+- name: deploy ec2
+  - ec2:
+    #aws_access_key: AKIAJLX2WLMXUNY646AA
+    #aws_secret_key: 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
+    key_name: deploy_ec2
+    instance_type: t2.micro
+    image: ami-04b6c7f808c4ae723
+    vpc_subnet_id: vpc-ce16f7a7
+    assign_public_ip: yes
