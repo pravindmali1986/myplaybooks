@@ -1,6 +1,6 @@
 - name: role
   hosts: localhost
-  gatheri_facts: false
+  gather_facts: false
   vars_files: " {{ vaulted_vars_file }}"
   roles:  
     - role: ec2
