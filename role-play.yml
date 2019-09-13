@@ -1,6 +1,5 @@
 - name: role
   hosts: localhost
-  gather_facts: true
-  become: true
+  gather_facts: false
   roles:
-    - role: test-role
+    - role: ec2
