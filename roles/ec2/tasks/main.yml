@@ -1,12 +1,4 @@
 # tasks file for elasticsearch-node
 - name: deploy ec2
   ec2:
-    key_name: deploy_ec2
-    instance_type: t2.micro
-    image: 
-    vpc_subnet_id: vpc-ce16f7a7
-    assign_public_ip: yes
-
-#- name: hello World
-#  debug:
-#    msg: "Hello World!"
+   
