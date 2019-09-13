@@ -1,7 +1,13 @@
 - name: role
   hosts: localhost
   gather_facts: false
+<<<<<<< HEAD
   vars_files: secret.yml
   roles:
     - role: ec2
 
+=======
+  vars_files: " {{ vaulted_vars_file }}"
+  roles:  
+    - role: ec2
+>>>>>>> 92c2f02fcc9be3d04b0587f4cb8b5e10e63f9b5d
