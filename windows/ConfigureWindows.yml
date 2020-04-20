@@ -1,0 +1,35 @@
+# This is very Basic playbook to configure windows host. It will connect windows host on port 5985
+# with 'ntlm' winrm_transport. It will check for execution policy and will change it to Unrestricted.
+# After that it will download the .ps1 file and will configure windows for ansible connection. Once 
+# configuration is complete, it will set allowencrypted to true for basic authentication.
+#
+# Pravin Mali
+
+---
+- name: Configure Windows server for ansible communication
+  hosts: windows
+  tasks:
+
+    - name : Get and Set Execution policy
+      win_command: "{{ item }}"
+      with_items:
+        - powershell.exe Get-ExecutionPolicy
+        - powershell.exe Set-ExecutionPolicy unrestricted
+      register: config
+    - debug: var=config
+
+    - name: Download ConfigureRemotingForAnsible.ps1 file
+      win_get_url:
+        url: https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1
+        dest: c:\Users\Administrator\Documents\ConfigureRemotingForAnsible.ps1
+      register: download
+
+    - debug: var=download
+
+    - name: Execute confiure.ps1 and set allowencrypted to yes
+      win_command: "{{ item }}"
+      with_items:
+        - powershell.exe C:\Users\Administrator\Documents\ConfigureRemotingForAnsible.ps1
+        - powershell.exe winrm set winrm/config/service '@{AllowUnencrypted=\"true\"}'
+      register: allow
+    - debug: var=allow
