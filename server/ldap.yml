@@ -1,3 +1,5 @@
+# This is ldap configuration file.
+# @author : Pravin Mali
 ---
 - name: This file configures ldap server
   hosts: ldap
