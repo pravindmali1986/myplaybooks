@@ -1,4 +1,7 @@
 Go Lang :
 
-- https://gobyexample.com/
-- https://www.edureka.co/blog/golang-tutorial/ 
+1] https://gobyexample.com/
+
+2] https://www.edureka.co/blog/golang-tutorial/ 
+
+3] https://www.tutorialspoint.com/go/index.htm
