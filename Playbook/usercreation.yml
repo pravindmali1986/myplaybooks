@@ -1,0 +1,19 @@
+---
+- name: Creating users, group and Password for CS Team
+  hosts: all
+  tasks:
+
+  - name: Create a CS Group for Security Team
+    group:
+      name: csteam
+      state: present
+
+  - name: Create Nagesh Hirmukhe users for CS Team
+    user:
+      name: nhirmukh
+      comment: Nagesh Hirmukhe/India/IBM
+      group: csteam
+      shell: /bin/bash
+      expires: 0
+
+
